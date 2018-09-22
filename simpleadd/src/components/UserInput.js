@@ -23,7 +23,7 @@ class UserInput extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.getUserInput(this.state.value)
+        this.props.getUserInput(this.state.value);
     }
 
     render() {
