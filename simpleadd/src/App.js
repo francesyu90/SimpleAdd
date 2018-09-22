@@ -8,7 +8,8 @@ class App extends Component {
 
   state = {
       userInput: '-1',
-      expectedAnswer: '0'
+      expectedAnswer: '0',
+      score: 0
   }
 
   getUserInput = (uInput) => (
@@ -18,6 +19,12 @@ class App extends Component {
   getExpectedAnswer = (eAnswer) => (
     this.setState({expectedAnswer: eAnswer})
   )
+
+  updateScore = () => {
+    this.setState((currentState) => ({
+      score: currentState.score + 1
+    }));
+  }
 
   render() {
 
@@ -33,7 +40,12 @@ class App extends Component {
           getUserInput={this.getUserInput}
         />
 
-        <DisplayResult userInput={this.state.userInput} expectedAnswer={this.state.expectedAnswer} />
+        <DisplayResult 
+          userInput={this.state.userInput} 
+          expectedAnswer={this.state.expectedAnswer} 
+        />
+
+        <p>Score: {this.state.score}</p>
       </div>
     );
   }
