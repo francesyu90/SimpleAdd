@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import DisplayEquation from './components/DisplayEquation';
+import UserInput from './components/UserInput';
 
 class App extends Component {
 
@@ -23,8 +24,18 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="app">
-        <DisplayEquation x={this.state.x} y={this.state.y} z={this.state.z} r={this.generateDisplayResult()} />
+
+        <DisplayEquation 
+          x={this.state.x} 
+          y={this.state.y} 
+          z={this.state.z} 
+          r={this.generateDisplayResult()} 
+        />
+
+        <UserInput />
+        
       </div>
     );
   }
