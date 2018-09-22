@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import DisplayEquation from './components/DisplayEquation';
 import UserInput from './components/UserInput';
+import DisplayResult from './components/DisplayResult';
 
 class App extends Component {
 
@@ -32,11 +33,7 @@ class App extends Component {
           getUserInput={this.getUserInput}
         />
 
-        <p>
-          User Choice: {this.state.userInput}
-          <br></br>
-          Expected Answer: {this.state.expectedAnswer}
-        </p>
+        <DisplayResult userInput={this.state.userInput} expectedAnswer={this.state.expectedAnswer} />
       </div>
     );
   }
