@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 
 class DisplayResult extends Component {
 
+    evaluateResult() {
+
+        if (this.props.userInput === '-1') {
+            return "User input is not available"
+        }
+
+        return (this.props.expectedAnswer === this.props.userInput)? 
+            "Correct" : "Wrong";
+    }
+
     render() {
         return(
             <div>
                 <p>
-                    User Choice: {this.props.userInput}
-                    <br></br>
-                    Expected Answer: {this.props.expectedAnswer}
+                    {this.evaluateResult()}
                 </p>
             </div>
         );

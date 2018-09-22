@@ -12,8 +12,17 @@ const json = {
 
 class UserInput extends Component {
 
+    state = {
+        value: '-1'
+    }
+
     handleChange(event) {
-        this.props.getUserInput(event.currentTarget.value);
+        this.setState({ value: event.currentTarget.value })
+    }
+
+    handleClick(event) {
+        event.preventDefault();
+        this.props.getUserInput(this.state.value);
     }
 
     render() {
@@ -41,6 +50,9 @@ class UserInput extends Component {
                             </Radio>
                         ))}
                     </FormGroup>
+                    <Button bsStyle="primary" onClick={this.handleClick.bind(this)}
+                        >Confirm Your Answer
+                    </Button>
                 </form>
             </div>
         );
