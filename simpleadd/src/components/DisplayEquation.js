@@ -2,11 +2,34 @@ import React, { Component } from 'react';
 
 class DisplayEquation extends Component {
 
-    state = {
-        x: Math.floor(Math.random() * 101),
-        y: Math.floor(Math.random() * 101),
-        z: Math.floor(Math.random() * 101)
+    constructor(props) {
+
+        super(props);
+
+        const x = Math.floor(Math.random() * 101)
+        const y = Math.floor(Math.random() * 101)
+        const z = Math.floor(Math.random() * 101)
+        const displayResult = this.generateDisplayResult(x, y, z);
+
+        this.state = {
+            x: x,
+            y: y,
+            z: z,
+            p: displayResult
+        }
     }
+
+    handleUpdate = () => (
+        this.setState({
+            x: Math.floor(Math.random() * 101),
+            y: Math.floor(Math.random() * 101),
+            z: Math.floor(Math.random() * 101)
+        })
+    )
+
+    updateHandler = () => (
+        this.handleUpdate.bind(this)
+    )
   
     computeSum = (x, y, z) => (x + y + z);
   
@@ -21,16 +44,14 @@ class DisplayEquation extends Component {
 
     componentDidMount() {
 
-        const { x, y, z } = this.state;
+        const { x, y, z, p } = this.state;
 
-        this.props.getExpectedAnswer(
-            (this.generateDisplayResult(x, y, z) === this.computeSum(x, y, z))? '1':'0'
-        );
+        this.props.getExpectedAnswer((p === this.computeSum(x, y, z))? '1':'0');
     }
 
     render() {
 
-        const { x, y, z } = this.state;
+        const { x, y, z, p} = this.state;
 
         return(
             <div className="displayEquation">
@@ -41,7 +62,7 @@ class DisplayEquation extends Component {
                     <span className="operators"> + </span>
                     {z} 
                     <span className="operators"> = </span>
-                    <span className="result"> {this.generateDisplayResult(x, y, z)} </span>
+                    <span className="result"> {p} </span>
                 </h1>
             </div>
         );
