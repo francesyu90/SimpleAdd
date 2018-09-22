@@ -12,18 +12,8 @@ const json = {
 
 class UserInput extends Component {
 
-    state = {
-        value: '',
-        score: 0
-    }
-
     handleChange(event) {
-        this.setState({value: event.currentTarget.value})
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.getUserInput(this.state.value);
+        this.props.getUserInput(event.currentTarget.value);
     }
 
     render() {
@@ -51,14 +41,6 @@ class UserInput extends Component {
                             </Radio>
                         ))}
                     </FormGroup>
-
-                    <Button 
-                        type="submit" 
-                        bsStyle="primary" 
-                        onClick={this.handleSubmit.bind(this)
-                    }
-                        >Submit
-                    </Button>
                 </form>
             </div>
         );
