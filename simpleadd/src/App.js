@@ -9,33 +9,48 @@ class App extends Component {
       x: Math.floor(Math.random() * 101),
       y: Math.floor(Math.random() * 101),
       z: Math.floor(Math.random() * 101),
+      userInput: ''
   }
 
   computeSum = (x, y, z) => (x + y + z);
 
-  generateDisplayResult() {
+  generateDisplayResult(x, y, z) {
 
-      if(Math.floor((Math.random() * 10) + 1) % 2 == 0) {
-          return this.computeSum(this.state.x, this.state.y, this.state.z)
+      if(Math.floor((Math.random() * 10) + 1) % 2 === 0) {
+          return this.computeSum(x, y, z)
       } else {
           return Math.floor(Math.random() * 301);
       }
   }
 
+  generateExpectedOutput(x, y, z) {
+    return (this.computeSum(x, y, z) === this.generateDisplayResult(x, y, z))? '1': '0';
+  }
+
+  getUserInput = (uInput) => (
+    this.setState({userInput: uInput})
+  )
+
   render() {
+
+    const { x, y, z } = this.state;
+
     return (
 
       <div className="app">
 
         <DisplayEquation 
-          x={this.state.x} 
-          y={this.state.y} 
-          z={this.state.z} 
-          r={this.generateDisplayResult()} 
+          x={x} 
+          y={y} 
+          z={z} 
+          r={this.generateDisplayResult(x, y, z)} 
         />
 
-        <UserInput />
-        
+        <UserInput 
+          getUserInput={this.getUserInput}
+        />
+
+        <p>{this.state.userInput}</p>
       </div>
     );
   }
