@@ -1,5 +1,5 @@
-# SimpleAdd [first React application]
-A simple addition game in React 
+# SimpleAdd 
+A simple addition game in React [first React application]
 
 Create a game that shows an equation of the form X+Y+Z=P. Here,
 X, Y, and Z should be random numbers, and P should be the proposed answer. The
