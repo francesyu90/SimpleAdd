@@ -18,18 +18,6 @@ class DisplayEquation extends Component {
             p: displayResult
         }
     }
-
-    handleUpdate = () => (
-        this.setState({
-            x: Math.floor(Math.random() * 101),
-            y: Math.floor(Math.random() * 101),
-            z: Math.floor(Math.random() * 101)
-        })
-    )
-
-    updateHandler = () => (
-        this.handleUpdate.bind(this)
-    )
   
     computeSum = (x, y, z) => (x + y + z);
   

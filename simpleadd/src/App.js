@@ -3,6 +3,7 @@ import './App.css';
 import DisplayEquation from './components/DisplayEquation';
 import UserInput from './components/UserInput';
 import DisplayResult from './components/DisplayResult';
+import PropTypes from 'prop-types'
 
 class App extends Component {
 
@@ -49,6 +50,14 @@ class App extends Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+
+  userInput: PropTypes.string,
+  expectedAnswer: PropTypes.string,
+  getExpectedAnswer: PropTypes.func,
+  getUserInput: PropTypes.func
 }
 
 export default App;
