@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 class DisplayResult extends Component {
 
+    static propTypes = {
+        userInput: PropTypes.string.isRequired,
+        expectedAnswer: PropTypes.string.isRequired
+    }
+
     evaluateResult() {
 
         if (this.props.userInput === '-1') {
@@ -22,11 +27,6 @@ class DisplayResult extends Component {
             </div>
         );
     }
-}
-
-DisplayResult.propTypes = {
-    userInput: PropTypes.string.isRequired,
-    expectedAnswer: PropTypes.string.isRequired
 }
 
 export default DisplayResult;
